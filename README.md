@@ -32,12 +32,17 @@ in its `robots.txt`, scores 0/30 on access.
 
 ## Stack
 
-Next.js 16 (App Router) · TypeScript · Tailwind 4 · Cheerio · Groq ·
-deployed on Vercel.
+Next.js 16 (App Router) · TypeScript · Tailwind 4 · Cheerio · OpenRouter
+with a Groq fallback · deployed on Vercel.
 
-The audit itself needs no API key. Groq only writes the plain-language
+The audit itself needs no API key. The model only writes the plain-language
 verdict and the ranked fix list; without a key the full deterministic report
 still renders.
+
+Both providers speak the OpenAI chat-completions dialect, so swapping models
+is an environment variable, not a code change. OpenRouter is tried first and
+Groq stands behind it, which keeps the report intact through a single
+provider outage.
 
 ## Running locally
 

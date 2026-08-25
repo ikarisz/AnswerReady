@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { scan } from "@/lib/scan";
-import { explain } from "@/lib/groq";
+import { explain } from "@/lib/ai";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
