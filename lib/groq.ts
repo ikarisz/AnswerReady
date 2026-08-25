@@ -1,6 +1,6 @@
 import type { ScanResult } from "./types";
 
-const MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+const MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
 
 /**
  * Turns the raw scan into a plain-language verdict plus ranked fixes.
