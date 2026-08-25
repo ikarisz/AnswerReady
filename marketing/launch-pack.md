@@ -13,7 +13,13 @@ Before any selling happens, we run the scanner over 50 well-known websites
 and publish the results. That post is the marketing. The tool is the
 punchline at the bottom.
 
-**Post title (Thai):** ผมสแกนเว็บไซต์ธุรกิจไทย 50 เว็บ ว่า ChatGPT มองเห็นมั้ย — 3 ใน 4 มองไม่เห็นเลย
+> **แก้ไข 25 ส.ค. 2026 — สมมติฐานเดิมผิด ยกเลิกแล้ว**
+> พาดหัวที่วางไว้ตอนแรกคือ "3 ใน 4 มองไม่เห็นเลย" พอสแกนจริง 52 เว็บ
+> พบว่ามีแค่ 8% ที่บล็อกบอท AI คะแนนเฉลี่ย 73/100 — **ห้ามใช้พาดหัวเดิม
+> เด็ดขาด เพราะมันไม่จริง** ตัวเลขจริงและโพสต์ฉบับใช้งานอยู่ที่
+> `marketing/post-01-th.md`
+
+**Post title (Thai):** ลองสแกนเว็บบริษัทใหญ่ของไทย 52 เว็บ ว่า ChatGPT อ่านเจอมั้ย — ผลไม่เหมือนที่คิด
 
 **Post title (English):** I scanned 50 well-known sites to see if ChatGPT can
 read them. Most of them fail on one line of robots.txt.
