@@ -4,7 +4,9 @@ import type { Check, Category, ScanResult, BotStatus } from "./types";
 
 const UA =
   "AnswerReadyBot/1.0 (+https://answerready.io/bot; AI-search readiness audit)";
-const TIMEOUT_MS = 12_000;
+// Plenty of corporate sites take 10s+ to answer a cold request. Anything
+// slower than this is a finding in itself, not a reason to give up early.
+const TIMEOUT_MS = 20_000;
 
 /** Crawlers that decide whether a brand can appear in AI answers at all. */
 const AI_BOTS: { ua: string; label: string; weight: number }[] = [
@@ -39,6 +41,23 @@ async function get(
   } finally {
     clearTimeout(timer);
   }
+}
+
+/**
+ * Plenty of hosts answer on only one of the apex and the www subdomain, and
+ * visitors type whichever they remember. Try the other one before declaring
+ * a site unreachable.
+ */
+async function getPage(url: string) {
+  const first = await get(url);
+  if (first.ok) return first;
+
+  const u = new URL(url);
+  u.hostname = u.hostname.startsWith("www.")
+    ? u.hostname.slice(4)
+    : "www." + u.hostname;
+  const second = await get(u.toString());
+  return second.ok ? second : first;
 }
 
 function check(
@@ -83,16 +102,17 @@ export async function scan(target: string): Promise<ScanResult> {
   const started = Date.now();
   const url = normalizeUrl(target);
   if (!url) throw new Error("INVALID_URL");
-  const origin = new URL(url).origin;
+  const page = await getPage(url);
+  if (!page.ok || !page.text) throw new Error("UNREACHABLE");
 
-  const [page, robotsRes, llmsRes, sitemapRes] = await Promise.all([
-    get(url),
+  // Read the side files from whichever host actually served the page, so a
+  // www fallback or a redirect does not send us to the wrong robots.txt.
+  const origin = new URL(page.finalUrl).origin;
+  const [robotsRes, llmsRes, sitemapRes] = await Promise.all([
     get(origin + "/robots.txt"),
     get(origin + "/llms.txt"),
     get(origin + "/sitemap.xml"),
   ]);
-
-  if (!page.ok || !page.text) throw new Error("UNREACHABLE");
 
   const $raw = cheerio.load(page.text);
   const $ = cheerio.load(page.text);

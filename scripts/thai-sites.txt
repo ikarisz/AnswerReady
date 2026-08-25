@@ -1,0 +1,61 @@
+# Banks & finance
+scb.co.th
+kasikornbank.com
+bangkokbank.com
+krungsri.com
+ttbbank.com
+gsb.or.th
+# Retail & e-commerce
+central.co.th
+robinson.co.th
+homepro.co.th
+powerbuy.co.th
+bigc.co.th
+lotuss.com
+thaiwatsadu.com
+jib.co.th
+advice.co.th
+banana.co.th
+# Telecom & energy
+ais.th
+true.th
+nt.co.th
+pttor.com
+bangchak.co.th
+# Airlines, hotels, travel
+thaiairways.com
+bangkokair.com
+nokair.com
+dusit.com
+centarahotelsresorts.com
+minorhotels.com
+# Hospitals
+bumrungrad.com
+bangkokhospital.com
+samitivejhospitals.com
+praram9.com
+# Food & FMCG
+cp.co.th
+thaibev.com
+osotspa.com
+mkrestaurant.com
+thepizzacompany.co.th
+cafe-amazon.com
+# Property
+sansiri.com
+apthai.com
+lpn.co.th
+pruksa.com
+origin.co.th
+# Universities
+chula.ac.th
+mahidol.ac.th
+ku.ac.th
+# Media & tech
+thairath.co.th
+matichon.co.th
+dailynews.co.th
+prachachat.net
+brandinside.asia
+techsauce.co
+blognone.com
