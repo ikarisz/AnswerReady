@@ -1,0 +1,14 @@
+# AnswerReady
+
+> A free audit that scores how ready a website is to be found, read and cited by AI answer engines such as ChatGPT Search, Perplexity and Google AI Overviews.
+
+AnswerReady fetches a public page and its robots.txt, then scores five categories out of 100: AI crawler access (30), content extractability (20), structured data (20), answer-ready content (20), and trust and discoverability (10). Every finding is deterministic and verifiable against the live page.
+
+## Key facts
+- The homepage scan is free and requires no account.
+- A full 50-page report with competitor comparison costs 29 USD as a one-off.
+- Weekly tracking with crawler-block alerts costs 29 USD per month.
+- The crawler identifies itself as AnswerReadyBot and requests one page per scan.
+
+## Pages
+- [Home and free scan](https://answerready.io/): run an audit and read the methodology.
