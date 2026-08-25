@@ -21,8 +21,9 @@ punchline at the bottom.
 
 **Post title (Thai):** ลองสแกนเว็บบริษัทใหญ่ของไทย 52 เว็บ ว่า ChatGPT อ่านเจอมั้ย — ผลไม่เหมือนที่คิด
 
-**Post title (English):** I scanned 50 well-known sites to see if ChatGPT can
-read them. Most of them fail on one line of robots.txt.
+**Post title (English):** I scanned 52 well-known sites to see if ChatGPT can
+read them. The blocking problem was smaller than I expected. The invisibility
+problem was bigger.
 
 This works because the finding is real, verifiable by anyone in 10 seconds,
 and mildly alarming to exactly the people who would pay us.
@@ -49,25 +50,11 @@ and mildly alarming to exactly the people who would pay us.
 > โพสต์ผลสแกนเป็น "ข้อมูลที่ค้นพบ" แล้วค่อยบอกว่าเครื่องมือฟรีอยู่ที่ไหนใน
 > คอมเมนต์แรก ไม่ใช่ในโพสต์
 
-### โพสต์ที่ 1 — ตัวเปิด (ให้ความรู้ ไม่ขาย)
+### โพสต์ที่ 1 — ตัวเปิด
 
-> ช่วงนี้ลูกค้าเริ่มถาม ChatGPT แทนการเสิร์ช Google แล้ว
-> เลยลองเช็คดูว่าเว็บธุรกิจไทยพร้อมมั้ย ผลออกมาน่าตกใจกว่าที่คิด
->
-> สแกนไป 50 เว็บ พบว่า 3 ใน 4 ตกม้าตายเรื่องเดิมๆ:
->
-> 1. ไฟล์ robots.txt บล็อกบอทของ AI ไว้ (GPTBot, PerplexityBot, Google-Extended)
-> — ส่วนใหญ่ไม่ได้ตั้งใจ ติดมากับธีมหรือปลั๊กอิน แต่ผลคือ ChatGPT อ่านเว็บคุณไม่ได้เลย
-> 2. เนื้อหาโหลดด้วย JavaScript — บอท AI ส่วนใหญ่ไม่รัน JS เห็นเป็นหน้าว่าง
-> 3. ไม่มี Schema markup — AI เลยไม่รู้ว่าคุณคือ "บริษัท" ไม่ใช่แค่ก้อนข้อความ
->
-> ต่างจาก SEO เดิมตรงที่ Google โชว์ลิงก์ 10 อัน แต่ AI ตอบคำตอบเดียว
-> แล้วอ้างอิงแค่ 2-3 เว็บ ถ้าไม่ใช่เว็บที่ถูกอ้าง = ไม่มีตัวตน
->
-> ใครอยากลองเช็คเว็บตัวเอง ผมทำเครื่องมือสแกนฟรีไว้ ไม่ต้องสมัคร ใส่ URL
-> รอ 10 วิ (ลิงก์อยู่คอมเมนต์แรกครับ)
-
-**คอมเมนต์แรก:** ลิงก์เว็บ + "ถ้าคะแนนต่ำกว่า 60 ทักมาได้ครับ เดี๋ยวดูให้ว่าติดตรงไหน"
+**ย้ายไปที่ [`post-01-th.md`](post-01-th.md) แล้ว** — ฉบับนั้นใช้ตัวเลขจากการ
+สแกนจริง 52 เว็บ ฉบับร่างเดิมถูกลบทิ้งเพราะอ้างตัวเลขที่ยังไม่ได้ตรวจสอบ
+และตรวจแล้วพบว่าไม่จริง
 
 ### โพสต์ที่ 2 — ลงลึกทีละเคส (โพสต์ 3 วันถัดมา)
 
@@ -118,13 +105,11 @@ and mildly alarming to exactly the people who would pay us.
 >
 > ---
 >
-> 1/ The single most common failure is one line in robots.txt.
+> 1/ The most common failure is not what I expected.
 >
-> Disallow: / under User-agent: GPTBot
->
-> Most site owners never wrote it. A theme, a plugin or a Cloudflare toggle
-> did. The result is the same: ChatGPT cannot fetch the page, so it can never
-> cite it.
+> Only 8% blocked an AI crawler outright. But 46% ship no structured data at
+> all, so a model can read the words and still not know the page belongs to a
+> company, let alone which one.
 >
 > 2/ The second: content that only exists after JavaScript runs.
 >
