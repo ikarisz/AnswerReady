@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AnswerReady
 
-## Getting Started
+**Is your website visible to ChatGPT?**
 
-First, run the development server:
+AnswerReady scores a website 0-100 on whether AI answer engines — ChatGPT
+Search, Perplexity, Google AI Overviews, Claude — can reach it, read it,
+understand it and cite it. Paste a URL, get the score and the exact fixes in
+about ten seconds.
+
+Classic SEO optimises for ten blue links, where rank 7 still earns clicks. An
+answer engine writes one paragraph and cites two or three sources. There is
+no rank 7. You are quoted or you are absent.
+
+## How the score works
+
+100 points across five categories. Every finding is deterministic and
+verifiable against the live page — nothing is guessed.
+
+| Category | Points | What it measures |
+| --- | --- | --- |
+| AI Crawler Access | 30 | Whether `OAI-SearchBot`, `PerplexityBot`, `Google-Extended`, `ClaudeBot` and 7 others are allowed by `robots.txt` |
+| Content Extractability | 20 | Words surviving in raw HTML, since AI crawlers largely do not run JavaScript |
+| Structured Data | 20 | Valid JSON-LD, meaningful Schema.org types, `sameAs` entity links |
+| Answer-Ready Content | 20 | Single H1, section headings, question-shaped content, lists and tables, concise paragraphs |
+| Trust & Discoverability | 10 | Title and description, date and author signals, `sitemap.xml`, `llms.txt` |
+
+Access is weighted heaviest because it is binary: a crawler that cannot fetch
+the page can never cite it, no matter how good the content is.
+
+Validated against ground truth — `nytimes.com`, which blocks every AI crawler
+in its `robots.txt`, scores 0/30 on access.
+
+## Stack
+
+Next.js 16 (App Router) · TypeScript · Tailwind 4 · Cheerio · Groq ·
+deployed on Vercel.
+
+The audit itself needs no API key. Groq only writes the plain-language
+verdict and the ranked fix list; without a key the full deterministic report
+still renders.
+
+## Running locally
 
 ```bash
+npm install
+cp .env.example .env.local   # optional: add a Groq key for the AI verdict
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Crawler etiquette
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AnswerReady requests one page per scan, identifies itself as
+`AnswerReadyBot/1.0`, reads only public URLs, and refuses private and
+loopback addresses.
