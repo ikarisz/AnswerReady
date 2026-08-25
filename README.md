@@ -48,7 +48,7 @@ provider outage.
 
 ```bash
 npm install
-cp .env.example .env.local   # optional: add a Groq key for the AI verdict
+cp .env.example .env.local   # optional: add an OpenRouter key for the AI verdict
 npm run dev
 ```
 
