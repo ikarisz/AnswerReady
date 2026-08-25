@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       code === "INVALID_URL"
         ? "That does not look like a public website address."
         : code === "UNREACHABLE"
-          ? "Could not fetch that page. Check the address, or the site may be blocking us."
+          ? "This site refused our request or did not answer within 20 seconds. That is worth knowing on its own: bot protection and slow origins turn AI crawlers away the same way they turned us away. Check your WAF or bot-protection rules, or try a specific page URL."
           : "Scan failed. Try again.";
     return NextResponse.json({ error: message }, { status: 400 });
   }
